@@ -1,22 +1,5 @@
-function guid() {
-	function s4() {
-		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-	}
-	return (
-		s4() +
-		s4() +
-		"-" +
-		s4() +
-		"-" +
-		s4() +
-		"-" +
-		s4() +
-		"-" +
-		s4() +
-		s4() +
-		s4()
-	);
-}
+import "../css/styles.scss";
+
 document.addEventListener("DOMContentLoaded", function () {
 	M.AutoInit();
 });

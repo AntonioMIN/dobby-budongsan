@@ -1,0 +1,19 @@
+{
+  "name": "dobby-budongsan",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/AntonioMIN/dobby-budongsan",
+  "author": "AntonioMin <gvvvv1123@gmail.com>",
+  "license": "GPLv3",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "rm -r public && parcel build src/index.html --out-dir public --no-source-maps"
+  },
+  "dependencies": {
+    "sass": "^1.26.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
