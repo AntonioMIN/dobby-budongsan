@@ -10,6 +10,7 @@
     "build": "rm -r public && parcel build src/index.html --out-dir public --no-source-maps"
   },
   "dependencies": {
+    "materialize-css": "^1.0.0-rc.2",
     "sass": "^1.26.5",
     "vue": "^2.6.11",
     "vue-hot-reload-api": "^2.3.4"
