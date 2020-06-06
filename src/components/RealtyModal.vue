@@ -304,8 +304,17 @@
 		</div>
 		<div class="modal-footer">
 			<a href="#!" class="modal-close waves-effect waves-red btn-flat"
-				>취소</a
+				>닫기</a
 			>
+			<button
+				class="btn waves-effect waves-light modal-close red darken-1"
+				type="submit"
+				name="action"
+				v-on:click="onClickDelete()"
+				v-if="this.$attrs.currentId"
+			>
+				삭제
+			</button>
 			<button
 				class="btn waves-effect waves-light modal-close"
 				type="submit"
@@ -319,6 +328,9 @@
 </template>
 
 <script>
+import * as firebase from "firebase/app";
+import "firebase/auth";
+
 export default {
 	data: function() {
 		return {
@@ -394,6 +406,11 @@ export default {
 			],
 		};
 	},
+	mounted: function() {
+		var elems = document.querySelectorAll(".modal");
+		var instances = M.Modal.init(elems);
+		M.updateTextFields();
+	},
 	methods: {
 		onChangeCheckbox: function(group, id) {
 			this.$attrs.data[group][id] = this.$attrs.data[group][id]
@@ -403,17 +420,37 @@ export default {
 		onClickSave: function() {
 			var updater = this.$attrs.refresh;
 			if (this.$attrs.currentId === null) {
-				var newRef = this.$attrs.database.ref("realty").push();
+				var newRef = this.$attrs.database
+					.ref("users/" + firebase.auth().currentUser.uid + "/realty")
+					.push();
 				newRef.set(this.$attrs.data, function() {
 					updater();
 				});
 			} else {
 				this.$attrs.database
-					.ref("realty/" + this.$attrs.currentId)
+					.ref(
+						"users/" +
+							firebase.auth().currentUser.uid +
+							"/realty/" +
+							this.$attrs.currentId
+					)
 					.set(this.$attrs.data, function() {
 						updater();
 					});
 			}
+		},
+		onClickDelete: function() {
+			var updater = this.$attrs.refresh;
+			this.$attrs.database
+				.ref(
+					"users/" +
+						firebase.auth().currentUser.uid +
+						"/realty/" +
+						this.$attrs.currentId
+				)
+				.remove(function() {
+					updater();
+				});
 		},
 	},
 };

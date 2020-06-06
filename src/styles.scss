@@ -7,3 +7,32 @@ table {
 		cursor: pointer;
 	}
 }
+
+.intro {
+	text-align: center;
+	p {
+		font-size: 2.65rem;
+		text-align: center;
+		color: #545454;
+		margin: 4.5rem 0 0 0;
+	}
+	h3 {
+		font-size: 2.2rem;
+		color: #717171;
+		margin: 0 0 58px 0;
+	}
+}
+
+.footer {
+    height: 32px;
+    width: 100%;
+    position: fixed;
+	bottom: 0;
+	text-align: center;
+	color: #848484;
+	font-size: 16px;
+	line-height: 1;
+	i {
+		font-size: 16px;
+	}
+}
